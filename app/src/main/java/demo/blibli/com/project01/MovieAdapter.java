@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.List;
 
 import demo.blibli.com.project01.response.MovieResponse;
@@ -46,6 +48,8 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
     public void onBindViewHolder(@NonNull MovieViewHolder holder, int position) {
         MovieResponse item = data.get(position);
         holder.textRating.setText(String.valueOf(item.getVoteAverage()));
+        Glide.with(holder.imagePoster.getContext()).load("http://image.tmdb.org/t/p/w185/"+
+                item.getPosterPath()).into(holder.imagePoster);
     }
 
     @Override // jumlah item di listnya berapa
