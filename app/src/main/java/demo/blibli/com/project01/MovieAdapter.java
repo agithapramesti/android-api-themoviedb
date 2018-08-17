@@ -24,11 +24,13 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 
         ImageView imagePoster;
         TextView textRating;
+        TextView textTitle;
 
         public MovieViewHolder(View itemView) {
             super(itemView);
             imagePoster = itemView.findViewById(R.id.imageView4);
             textRating = itemView.findViewById(R.id.textView7);
+            textTitle = itemView.findViewById(R.id.txtTitle);
         }
     }
 
@@ -48,6 +50,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
     public void onBindViewHolder(@NonNull MovieViewHolder holder, int position) {
         MovieResponse item = data.get(position);
         holder.textRating.setText(String.valueOf(item.getVoteAverage()));
+        holder.textTitle.setText("Title: "+String.valueOf(item.getTitle()));
         Glide.with(holder.imagePoster.getContext()).load("http://image.tmdb.org/t/p/w185/"+
                 item.getPosterPath()).into(holder.imagePoster);
     }
